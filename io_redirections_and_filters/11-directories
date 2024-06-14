@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -1 /ruta/al/directorio | wc -l
+ls -1 . | wc -l
