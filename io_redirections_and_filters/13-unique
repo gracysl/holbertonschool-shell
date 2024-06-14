@@ -1,2 +1,2 @@
 #!/bin/bash
-list unique -u | cat
+cat list | unique -u
