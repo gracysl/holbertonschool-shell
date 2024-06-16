@@ -1,2 +1,2 @@
 #!/bin/bash
-echo $(set) $(printenv) $(declare -f) | less
+ls -l $(set) $(printenv) $(declare -f)
