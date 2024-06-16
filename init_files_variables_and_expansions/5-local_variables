@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -l $(set) $(printenv) $(declare -f)
+ls -l $(set)
