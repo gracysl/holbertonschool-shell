@@ -6,17 +6,19 @@ archivo="school"
 
 # Verifica si el archivo existe
 if [ -e "$archivo" ]; then
-  echo "El archivo '$archivo' existe."
+  echo "'$archivo' file exists"
   
+# Verifica si el archivo está vacío
+  if [ -s "$archivo" ]; then
+    echo "'$archivo' file is not empty"
+  else
+    echo "'$archivo' file is empty"
+  fi
+
   # Verifica el tipo de archivo
   if [ -f "$archivo" ]; then
-    echo "Es un archivo regular."
-  elif [ -d "$archivo" ]; then
-    echo "Es un directorio."
-  else
-    echo "Es otro tipo de archivo."
+    echo "'$archivo' is a regular file"
   fi
 else
-  echo "El archivo '$archivo' no existe."
+  echo "'$archivo' file does not exist"
 fi
-
