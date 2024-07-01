@@ -8,5 +8,12 @@ directorio="."
 # Ciclo for para iterar sobre cada archivo en el directorio
 for archivo in "$directorio"/*
 do
-  echo "$(basename "$archivo")"
+  nombre_archivo=$(basename "$archivo")
+
+  # Verifica si el nombre del archivo contiene un guion
+  if [[ "$nombre_archivo" == *-* ]]; then
+    # Obtiene la parte del nombre del archivo después del guion
+    parte_despues_guion=$(echo "$nombre_archivo" | cut -d '-' -f 2-)
+    echo "$parte_despues_guion"
+  fi
 done
