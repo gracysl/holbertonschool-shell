@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+#This script is displaying information about the school file.
+
+# Nombre del archivo
+archivo="school"
+
+# Verifica si el archivo existe
+if [ -e "$archivo" ]; then
+  echo "El archivo '$archivo' existe."
+  
+  # Verifica el tipo de archivo
+  if [ -f "$archivo" ]; then
+    echo "Es un archivo regular."
+  elif [ -d "$archivo" ]; then
+    echo "Es un directorio."
+  else
+    echo "Es otro tipo de archivo."
+  fi
+  
+  # Muestra el tamaño del archivo
+  tamano=$(stat -c%s "$archivo")
+  echo "Tamaño del archivo: $tamano bytes"
+  
+  # Muestra los permisos del archivo
+  permisos=$(stat -c%A "$archivo")
+  echo "Permisos del archivo: $permisos"
+  
+  # Muestra la fecha de última modificación
+  fecha_modificacion=$(stat -c%y "$archivo")
+  echo "Fecha de última modificación: $fecha_modificacion"
+else
+  echo "El archivo '$archivo' no existe."
+fi
+
