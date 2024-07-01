@@ -1,18 +1,12 @@
 #!/usr/bin/env bash
-#This script is displaying the content of the current directory,
-#where only the part of the name after the first dash is displayed.
+#This script is displaying the content of the current directory, part ot the name the first dash in displayed.
 
-# Directorio a listar
 directorio="."
 
-# Ciclo for para iterar sobre cada archivo en el directorio
 for archivo in "$directorio"/*
 do
   nombre_archivo=$(basename "$archivo")
-
-  # Verifica si el nombre del archivo contiene un guion
   if [[ "$nombre_archivo" == *-* ]]; then
-    # Obtiene la parte del nombre del archivo después del guion
     parte_despues_guion=$(echo "$nombre_archivo" | cut -d '-' -f 2-)
     echo "$parte_despues_guion"
   fi
