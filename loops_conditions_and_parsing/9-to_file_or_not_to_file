@@ -16,18 +16,6 @@ if [ -e "$archivo" ]; then
   else
     echo "Es otro tipo de archivo."
   fi
-  
-  # Muestra el tamaño del archivo
-  tamano=$(stat -c%s "$archivo")
-  echo "Tamaño del archivo: $tamano bytes"
-  
-  # Muestra los permisos del archivo
-  permisos=$(stat -c%A "$archivo")
-  echo "Permisos del archivo: $permisos"
-  
-  # Muestra la fecha de última modificación
-  fecha_modificacion=$(stat -c%y "$archivo")
-  echo "Fecha de última modificación: $fecha_modificacion"
 else
   echo "El archivo '$archivo' no existe."
 fi
