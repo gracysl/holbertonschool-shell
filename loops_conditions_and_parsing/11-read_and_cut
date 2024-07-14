@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# This script is displaying the content of the file /etc/passwd
 
 # Abrir el archivo /etc/passwd para lectura
 while IFS=: read -r username _ userid _ _ _ homedir _; do
