@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# This script is displaying the visitor IP along with the HTTP status code from the Apache log file
+
+logfile="/path/to/your/apache.log"
+
+# Process the log file
+awk '
+{
+    # Extract IP and HTTP status code from the log line
+    ip = $1
+    http_code = $9
+
+    # Increment the count for this IP and HTTP code combination
+    count[ip,http_code]++
+}
+
+# After processing all lines, output the results
+END {
+    for (entry in count) {
+        split(entry, keys, SUBSEP)
+        ip = keys[1]
+        http_code = keys[2]
+        print count[entry], ip, http_code
+    }
+}
+' "$logfile" | sort -nr

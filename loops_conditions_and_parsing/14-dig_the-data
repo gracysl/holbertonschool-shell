@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# This script hat groups visitors by IP and HTTP status code, and displays this data.
+
+logfile="/path/to/your/apache.log"
+
+# Process the log file with awk, and sort the results
+awk '
+{
+    # Extract IP and HTTP status code from the log line
+    ip = $1
+    http_code = $9
+
+    # Increment the count for this IP and HTTP code combination
+    count[ip " " http_code]++
+}
+
+# After processing all lines, output the results
+END {
+    for (entry in count) {
+        print count[entry], entry
+    }
+}
+' "$logfile" | sort -nr
