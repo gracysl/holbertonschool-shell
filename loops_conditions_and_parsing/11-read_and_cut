@@ -3,5 +3,6 @@
 
 # Abrir el archivo /etc/passwd para lectura
 while IFS=: read -r username _ userid _ _ _ homedir _; do
-  echo "$username":$userid:$homedir
+  cleaned_homedir=${homedir#/home/"$username"}
+  echo "$username:$userid:$cleaned_homedir"
 done < /etc/passwd
