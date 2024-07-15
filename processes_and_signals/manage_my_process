@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+#This script displays.
+
+# Function to write "I am alive!" to /tmp/my_process
+function write_to_file {
+    echo "I am alive!" >> /tmp/my_process
+}
+
+# Main loop to write indefinitely
+while true
+do
+    write_to_file
+    sleep 2
+done
