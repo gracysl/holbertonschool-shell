@@ -1,15 +1,38 @@
 #!/usr/bin/env bash
-#This script stops 4-to_infinity_and_beyond proces with kill.
+#This script displays To infinity and beyond indefinitely and stop with kill.
 
-# Find the PID of the process named 4-to_infinity_and_beyond
-pid=$(pgrep -f 4-to_infinity_and_beyond)
+#!/bin/bash
 
-# Check if the process is running
-if [ -z "$pid" ]; then
-  echo "No 4-to_infinity_and_beyond process found."
-else
-  # Kill the process
-  kill "$pid"
-  echo "4-to_infinity_and_beyond process with PID $pid has been stopped."
-fi
+# Función para detener el proceso
+function stop_process {
+    echo "Stopping To infinity and beyond process..."
+    # Obtiene el PID del proceso actual
+    pid=$(pgrep -f "To infinity and beyond")
+    if [ -n "$pid" ]; then
+        kill "$pid"  # Envía la señal de terminación al proceso
+        echo "To infinity and beyond process with PID $pid has been stopped."
+    else
+        echo "To infinity and beyond process not found."
+    fi
+}
 
+# Función para iniciar el proceso
+function start_process {
+    echo "Starting To infinity and beyond process..."
+
+    # Loop indefinidamente
+    while :
+    do
+        echo "To infinity and beyond"
+        sleep 2
+    done
+}
+
+# Manejo de señales
+trap stop_process SIGINT SIGTERM
+
+# Iniciar el proceso al ejecutar el script
+start_process
+
+# Espera hasta que el proceso termine
+wait
