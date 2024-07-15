@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+#This script displays To infinity and beyond indefinitely and stop cannot use kill or killall
+
+# Función para detener el proceso
+function stop_process {
+    echo "Stopping To infinity and beyond process..."
+    running=false
+}
+
+# Función para manejar la señal
+function handle_signal {
+    echo "Received termination signal. Stopping..."
+    stop_process
+}
+
+# Manejo de señales
+trap handle_signal SIGUSR1
+
+# Función para iniciar el proceso
+function start_process {
+    echo "Starting To infinity and beyond process..."
+
+    # Variable para controlar el bucle
+    running=true
+
+    # Loop indefinidamente
+    while $running
+    do
+        echo "To infinity and beyond"
+        sleep 2
+    done
+}
+
+# Iniciar el proceso al ejecutar el script
+start_process
