@@ -18,8 +18,8 @@ function start_process {
 function stop_process {
     if [ -f "$PIDFILE" ]; then
         PID=$(cat "$PIDFILE")
-        kill $PID
-        wait $PID 2>/dev/null
+        kill "$PID"
+        wait "$PID" 2>/dev/null
         rm "$PIDFILE"
         echo "manage_my_process stopped"
     else
