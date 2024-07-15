@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+#This script displays To infinity and beyond indefinitely.
+
+# Loop indefinitely
+while true
+do
+    # Display the message
+    echo "To infinity and beyond"
+
+    # Sleep for 2 seconds
+    sleep 2
+done
