@@ -1,0 +1,58 @@
+#!/usr/bin/env bash
+#This script is Process and PID file.
+
+#!/bin/bash
+
+PIDFILE="/var/run/myscript.pid"
+
+# Function to create PID file
+function create_pidfile {
+    echo $$ > "$PIDFILE"
+    echo "PID file created: $PIDFILE"
+}
+
+# Function to remove PID file
+function remove_pidfile {
+    if [ -f "$PIDFILE" ]; then
+        rm "$PIDFILE"
+        echo "PID file removed."
+    fi
+}
+
+# Function to handle SIGTERM signal
+function handle_sigterm {
+    echo "I hate the kill command"
+    remove_pidfile
+    exit 0
+}
+
+# Function to handle SIGINT signal
+function handle_sigint {
+    echo "Y U no love me?!"
+}
+
+# Function to handle SIGQUIT signal
+function handle_sigquit {
+    echo "Received SIGQUIT. Deleting PID file and terminating."
+    remove_pidfile
+    exit 0
+}
+
+# Trap signals
+trap handle_sigterm SIGTERM
+trap handle_sigint SIGINT
+trap handle_sigquit SIGQUIT
+
+# Main function
+function main {
+    create_pidfile
+    echo "To infinity and beyond"
+    while true
+    do
+        sleep 2
+        echo "To infinity and beyond"
+    done
+}
+
+# Start main function
+main
